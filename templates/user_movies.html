@@ -1,0 +1,39 @@
+{% include "header.html" %}
+<!-- Main content -->
+
+{% if user.movies|length == 0 %}
+  <h3>No movies found, would you like to add some?</h3>
+{% else %}
+  <ol class="movie-grid">
+  {% for movie in user.movies %}
+    <li class="mov-tooltip">
+      <div class="movie">
+        <a href="https://www.imdb.com/title/{{ movie.imdbID }}/" target="_blank">
+          <div class="ribbon-wrapper"><div class="ribbon">{{ movie.rating }}/10</div></div>
+          <img class="movie-poster" src="{{ movie.img }}">
+        </a>
+        <div class="movie-info">
+          <div class="movie-text">
+            <h4 class="movie-title">{{ movie.name }}</h4>
+            <p class="movie-year">{{ movie.year }}</p>
+          </div>
+          <img class="country" src="https://flagsapi.com/{{ movie.alpha_2 }}/flat/64.png">
+        </div>
+        <div class="buttons">
+          <a href="{{ url_for('update_user_movie', user_id=user.id, movie_id=movie.id) }}"
+             class="btn btn-success movie-btn">Update</a>
+          <button class="btn btn-danger movie-btn" onclick="deleteUserMovie({{ user.id }}, {{ movie.id }})">Delete</button>
+<!--          <form action="{{ url_for('get_user_movies', user_id=user.id) }}">-->
+<!--            <input type="submit" value="Delete" class="btn btn-danger movie-btn">-->
+<!--          </form>-->
+        </div>
+        {% if movie.note is defined %}
+        <span class="tooltip-text">{{ movie.note }}</span>
+        {% endif %}
+      </div>
+    </li>
+  {% endfor %}
+  </ol>
+{% endif %}
+<!-- End main content -->
+{% include "footer.html" %}

@@ -1,0 +1,15 @@
+{% include "head.html" %}
+	<div class="container fh5co-container">
+		<div class="row">
+			<div class="col-md-12 animate-box" data-animate-effect="fadeIn">
+				<div class="fh5co-404-wrap" id="video" data-vide-bg="{{url_for('static', filename='video/Crocodile')}}" data-vide-options="position: 0 50%">
+					<div class="overlay-404"></div>
+				</div>
+			</div>
+			<div class="col-md-12 text-center fh5co-404-text animate-box"  data-animate-effect="fadeIn">
+				<h2>Looks like you got lost</h2>
+				<p><a href="{{ url_for('index') }}" class="btn btn-primary">Go back home</a></p>
+			</div>
+		</div>
+	</div>
+{% include "footer.html" %}

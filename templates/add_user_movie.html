@@ -1,0 +1,19 @@
+{% include "header.html" %}
+<!-- Main content -->
+{% if error_message is defined %}
+<h3>{{ error_message }}</h3>
+{% endif %}
+<div class="form-box">
+  <h3>Add New Favorite Movie:</h3><br>
+  <form action="{{ url_for('add_new_user_movie', user_id=user_id) }}" method="POST">
+    <div class="form-group col-md-12">
+      <label for="movie-name">Enter Movie Title:</label><br>
+      <input class="form-control input-lg" type="text" id="movie-name" name="movie-name">
+    </div>
+    <div class="col-md-12">
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Add New Movie</button>
+    </div>
+  </form>
+</div>
+<!-- End main content -->
+{% include "footer.html" %}

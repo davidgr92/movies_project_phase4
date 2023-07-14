@@ -1,0 +1,45 @@
+{% include "header.html" %}
+<!-- Main content -->
+{% if error_message is defined %}
+<h3>{{ error_message }}</h3>
+{% endif %}
+<div class="form-box">
+  <h3>Update Movie Details:</h3><br>
+  <form class="form-inline" action="{{ url_for('update_user_movie', user_id=user_id, movie_id=movie.id) }}" method="POST">
+    <div class="form-inline">
+      <div class="form-group col-md-6">
+        <label for="movie-name">Movie Title:</label><br>
+        <input class="form-control input-lg" type="text" id="movie-name" name="name" value="{{ movie.name }}">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="movie-director">Director:</label><br>
+        <input class="form-control input-lg" type="text" id="movie-director" name="director" value="{{ movie.director }}">
+      </div>
+    </div>
+
+    <div class="form-inline">
+      <div class="form-group col-md-4">
+        <label for="movie-year">Release Year:</label><br>
+        <input class="form-control input-lg" type="text" id="movie-year" name="year" value="{{ movie.year }}">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="movie-rating">Rating:</label><br>
+        <input class="form-control input-lg" type="text" id="movie-rating" name="rating" value="{{ movie.rating }}">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="movie-genre">Genre:</label><br>
+        <input class="form-control input-lg" type="text" id="movie-genre" name="genre" value="{{ movie.genre }}">
+      </div>
+    </div>
+
+    <div class="form-group col-md-12">
+      <label for="movie-note">Personal Note:</label><br>
+      <input class="form-control input-lg" type="text" id="movie-note" name="note" value="{{ movie.note }}">
+    </div>
+    <div class="col-md-12">
+      <button type="submit" class="btn btn-success btn-lg btn-block">Update Movie</button>
+    </div>
+  </form>
+</div>
+<!-- End main content -->
+{% include "footer.html" %}

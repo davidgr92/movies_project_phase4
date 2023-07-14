@@ -1,0 +1,8 @@
+{% include "head.html" %}
+	<div class="image_wrapper">
+  	  	<img src="{{ url_for('static', filename='images/cinema-compressed.jpg') }}" alt="" />
+		<div class="overlay-hero">
+			<h1>{{ title|default("Welcome", true) }} </h1>
+		</div>
+	</div>
+	<div class="main-content">

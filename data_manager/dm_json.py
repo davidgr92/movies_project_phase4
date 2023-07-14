@@ -1,11 +1,11 @@
 import json
 from os.path import isfile
-from .dm_interface import DataManagerInterface
+from moviweb_project.data_manager.dm_interface import DataManagerInterface
 
 
 class JSONDataManager(DataManagerInterface):
     """Data manager class which interfaces with the JSON data file"""
-    def __init__(self, filename="data.json"):
+    def __init__(self, filename="data_manager/data.json"):
         self.filename = filename
         if not isfile(filename):
             self.save_to_file([])
@@ -45,13 +45,24 @@ class JSONDataManager(DataManagerInterface):
                 user.update(update_dict)
         self.save_to_file(users_list)
 
-    def get_user_movies(self, user_id) -> list:
-        """Returns a list of user movies based on input user_id,
-        each movie data as a dict object."""
+    def get_user(self, user_id) -> dict:
+        """Returns a user dict based on user_id"""
         users_list = self.get_all_users()
         for user in users_list:
             if user['id'] == user_id:
-                return user['movies']
+                return user
+
+    def get_user_movies(self, user_id) -> list:
+        """Returns a list of user movies based on input user_id,
+        each movie data as a dict object."""
+        return self.get_user(user_id)['movies']
+
+    def get_user_single_movie(self, user_id, movie_id) -> dict:
+        """Returns a dictionary with the specific user movie"""
+        user_movies = self.get_user_movies(user_id)
+        for movie in user_movies:
+            if movie['id'] == movie_id:
+                return movie
 
     def add_user_movie(self, user_id, movie_dict) -> None:
         """Adds a new movie to specific user in data file"""
@@ -81,4 +92,6 @@ class JSONDataManager(DataManagerInterface):
                 for movie in user['movies']:
                     if movie['id'] == movie_id:
                         movie.update(update_dict)
+                        if not update_dict.get('note'):
+                            del movie['note']
         self.save_to_file(users_list)
