@@ -129,8 +129,8 @@
             },
             {
                 "name": "Interstellar",
-                "rating": 8.7,
-                "year": 2014,
+                "rating": "8.7",
+                "year": "2014",
                 "genre": "Adventure, Drama, Sci-Fi",
                 "img": "https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg",
                 "director": "Christopher Nolan",
@@ -156,21 +156,6 @@
     {
         "id": 2,
         "name": "Lina",
-        "movies": []
-    },
-    {
-        "id": 3,
-        "name": "Tommy Lee",
-        "movies": []
-    },
-    {
-        "id": 4,
-        "name": "Ilan",
-        "movies": []
-    },
-    {
-        "id": 5,
-        "name": "Daniel",
         "movies": []
     }
 ]

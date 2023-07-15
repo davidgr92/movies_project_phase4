@@ -1,16 +1,16 @@
 {% include "header.html" %}
 <!-- Main content -->
 <div class="form-box">
-    <h3>Sign up for the MoviWeb app</h3><br>
-<form action="{{ url_for('add_new_user') }}" method="POST">
-  <div class="form-group col-md-12">
-    <label for="name">Choose User Name:</label><br>
-    <input class="form-control input-lg" type="text" id="name" name="name">
-  </div>
-  <div class="col-md-12">
-    <button type="submit" class="btn btn-primary btn-lg btn-block">Add User</button>
-  </div>
-</form>
+  <h3>Sign up for the MoviWeb app</h3><br>
+  <form action="{{ url_for('add_new_user') }}" method="POST">
+    <div class="form-group col-md-12">
+      <label for="name">Choose User Name:</label><br>
+      <input class="form-control input-lg" type="text" id="name" name="name">
+    </div>
+    <div class="col-md-12">
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Add User</button>
+    </div>
+  </form>
 </div>
 <!-- End main content -->
 {% include "footer.html" %}

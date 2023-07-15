@@ -1,9 +1,23 @@
 {% include "header.html" %}
 <!-- Main content -->
-
-<div class="list-group users">
+{% if users|length == 0 %}
+<div class="col-sm-3">
+  <h3>No users found</h3>
+  <p id="empty-user-movies">Would you like to add new user?</p>
+</div>
+{% endif %}
+<div class="col-sm-3">
+    <button id="add-user" type="button" class="btn-primary btn-block btn-lg" onclick="window.location.href='{{ url_for('add_new_user') }}';">Add New User</button>
+</div>
+<div id="users" class="col-sm-3">
 {% for user in users %}
-    <button type="button" class="list-group-item" onclick="window.location.href='{{ url_for('get_user_movies', user_id=user.id) }}';">{{ user.name }}</button>
+    <div class="btn-group" role="group">
+        <button type="button" class="btn btn-warning btn-lg col-xs-8 btn-user"
+                onclick="window.location.href='{{ url_for('get_user_movies', user_id=user.id) }}';">
+            {{ user.name }}</button>
+        <button type="button" class="btn btn-danger btn-lg col-xs-4 btn-user"
+        onclick="deleteUser({{ user.id }})">Delete</button>
+    </div>
 {% endfor %}
 </div>
 

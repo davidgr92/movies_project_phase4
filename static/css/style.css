@@ -1,9 +1,4 @@
-/* =======================================================
-*
-* 	Template Style
-*	Edit this section
-*
-* ======================================================= */
+/* General CSS settings */
 html, body {
   margin: 0;
   width: 100%;
@@ -16,28 +11,14 @@ body {
   line-height: 1.5;
   font-size: 16px;
   color: #000;
-}
-
-h1 {
-  padding: 35px 10px;
-  margin: 0;
-  z-index: 1;
-  color: #EDF6F9;
-  text-align: center;
-  font-weight: bold;
+  padding-top: 50px;
 }
 
 h3 {
   color: #006D77;
   font-weight: bold;
   text-align: center;
-}
-
-img {
-  display: block;
-  object-fit: cover;
-  width: 100%;
-  height: 400px;
+  margin: 10px 0 5px;
 }
 
 a {
@@ -53,70 +34,6 @@ a:hover {
   color: #FFDDD2;
 }
 
-/* 404 Template CSS */
-.fh5co-container {
-  margin-top: 50px;
-}
-
-.overlay-404 {
-  background: url(../images/404.svg) no-repeat center center;
-  background-size: cover;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  padding-left: 30px;
-  padding-right: 30px;
-  z-index: 2;
-}
-
-.overlay-404:after, .overlay-404:before {
-  content: "";
-  background: #ffffff;
-  height: 100%;
-  top: 0;
-  position: absolute;
-  height: 100%;
-  z-index: 10;
-  width: 20px;
-}
-
-.overlay-404:before {
-  left: 0;
-}
-
-.overlay-404:after {
-  right: 0;
-}
-
-#video {
-  position: relative;
-  height: 500px;
-  width: 100%;
-}
-
-@media screen and (max-width: 768px) {
-  #video {
-    height: 400px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  #video {
-    height: 200px;
-  }
-}
-
-/* Users pages */
-
-.users {
-  width: 40%;
-  margin: 0 30%;
-}
-
 .main-content {
   display: flex;
   flex-flow: column wrap;
@@ -124,20 +41,58 @@ a:hover {
   align-content: center;
   margin-top: 30px;
   margin-bottom: 30px;
+  row-gap: 20px;
 }
 
-.form-box {
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
-  padding: 30px;
-  padding-bottom: 70px;
+.alert {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
 }
 
-.form-group {
-  margin-bottom: 15px !important;
+/* ========= Header section ========= */
+#movieapp-nav {
+  margin-bottom: 0px;
 }
+
+#movieapp-nav > .container-fluid {
+  padding: 0 30%;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar-brand {
+  font-weight: 700;
+}
+
+#hero-img {
+  display: block;
+  object-position: 0 35%;
+  object-fit: cover;
+  width: 100%;
+  height: 300px;
+}
+
+.overlay-hero > h1, .overlay-hero > h2 {
+  padding: 10px;
+  margin: 0;
+  z-index: 1;
+  color: #EDF6F9;
+  text-align: center;
+}
+
+.overlay-hero > h1 {
+  font-size: 3.2em;
+  font-weight: 600;
+}
+
+.overlay-hero > h2 {
+  font-size: 2em;
+  font-weight: 300;
+}
+
 
 /* ======= Header Overlay Effect ======= */
-
 .image_wrapper {
   position: relative;
 }
@@ -148,6 +103,7 @@ a:hover {
 
   /* center overlay text */
   display: flex;
+  flex-flow: column wrap;
   align-items: center;
   justify-content: center;
   top: 0;
@@ -155,6 +111,38 @@ a:hover {
   left: 0;
   bottom: 0;
 }
+
+
+/* ======= Users pages ======= */
+.list-group {
+  padding: 0;
+  margin: auto;
+}
+
+.btn-group {
+  display: block !important;
+  margin-bottom: 10px;
+}
+
+.btn-user {
+  margin-bottom: 10px;
+}
+
+/* Form pages */
+.form-box {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
+  padding: 30px;
+  padding-bottom: 70px;
+}
+
+.form-group {
+  margin-bottom: 15px !important;
+}
+
+.form-control {
+  width: 100% !important;
+}
+
 
 /* ======= Movies grid CSS ======= */
 
@@ -202,6 +190,10 @@ a:hover {
   align-items: center;
 }
 
+.movie-info {
+  height: 85px;
+}
+
 .buttons {
   width: 100%;
   align-self: flex-end;
@@ -229,12 +221,15 @@ a:hover {
   height: 2.5em;
 }
 
-button.movie-btn, a.movie-btn {
+.movie-btn {
   width: 45%;
 }
 
-input.movie-btn {
-  width: 100%;
+#empty-user-movies {
+  text-align: center;
+  font-size: 1.1em;
+  margin: 0 0 20px;
+
 }
 
 /* ======= Tooltip CSS ======= */
@@ -291,41 +286,72 @@ input.movie-btn {
   color: #fff;
 }
 
-/* Update form page */
-.form-control {
-  width: 100% !important;
+
+/* 404 Template CSS */
+.overlay-400 {
+  background: url(../images/400.svg) no-repeat center center;
 }
 
-
-/* Style for the modal popup
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
+.overlay-404 {
+  background: url(../images/404.svg) no-repeat center center;
 }
 
-.modal-content {
-    background-color: #fefefe;
-    margin: 10% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 60%;
+.overlay-error {
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding-left: 30px;
+  padding-right: 30px;
+  z-index: 2;
 }
 
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
+.overlay-error:after, .overlay-error:before {
+  content: "";
+  background: #ffffff;
+  height: 100%;
+  top: 0;
+  position: absolute;
+  height: 100%;
+  z-index: 10;
+  width: 20px;
 }
 
-#updateForm h2 {
-    text-align: center;
-} */
+.overlay-error:before {
+  left: 0;
+}
+
+.overlay-error:after {
+  right: 0;
+}
+
+#video {
+  position: relative;
+  height: 500px;
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  #video {
+    height: 400px;
+  }
+
+  #users {
+    width: 90%;
+  }
+
+  .overlay-hero > h1 {
+    font-size: 2.5em;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #video {
+    height: 200px;
+  }
+}
+

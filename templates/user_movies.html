@@ -2,7 +2,11 @@
 <!-- Main content -->
 
 {% if user.movies|length == 0 %}
-  <h3>No movies found, would you like to add some?</h3>
+<div class="col-sm-3">
+  <h3>No movies found</h3>
+  <p id="empty-user-movies">Would you like to add some?</p>
+  <a class="btn btn-primary btn-lg btn-block" href="{{ url_for('add_new_user_movie', user_id=user.id) }}">Add New Movie</a>
+</div>
 {% else %}
   <ol class="movie-grid">
   {% for movie in user.movies %}
@@ -23,9 +27,6 @@
           <a href="{{ url_for('update_user_movie', user_id=user.id, movie_id=movie.id) }}"
              class="btn btn-success movie-btn">Update</a>
           <button class="btn btn-danger movie-btn" onclick="deleteUserMovie({{ user.id }}, {{ movie.id }})">Delete</button>
-<!--          <form action="{{ url_for('get_user_movies', user_id=user.id) }}">-->
-<!--            <input type="submit" value="Delete" class="btn btn-danger movie-btn">-->
-<!--          </form>-->
         </div>
         {% if movie.note is defined %}
         <span class="tooltip-text">{{ movie.note }}</span>

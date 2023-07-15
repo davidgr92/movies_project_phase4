@@ -2,7 +2,7 @@ import requests
 import pycountry
 
 
-class MovieAPIRequest:
+class MovieAPIConnection:
     """Movie API request class, gets movie from the API request
     and handles any errors."""
     def __init__(self):
@@ -21,23 +21,17 @@ class MovieAPIRequest:
         if 'Error' in data:
             return {'error': 'Movie not found!'}
 
-        try:
-            rating = float(data.get('imdbRating'))
-        except ValueError:
-            rating = data.get('imdbRating')
-
-        else:
-            return {
-                'name': data.get('Title'),
-                'rating': rating,
-                'year': int(data.get('Year')),
-                'genre': data.get('Genre'),
-                'img': data.get('Poster'),
-                'director': data.get('Director'),
-                'country': data.get('Country'),
-                'alpha_2': self.get_country_alpha_2(data.get('Country')),
-                'imdbID': data.get('imdbID')
-            }
+        return {
+            'name': data.get('Title'),
+            'rating': data.get('imdbRating'),
+            'year': int(data.get('Year')),
+            'genre': data.get('Genre'),
+            'img': data.get('Poster'),
+            'director': data.get('Director'),
+            'country': data.get('Country'),
+            'alpha_2': self.get_country_alpha_2(data.get('Country')),
+            'imdbID': data.get('imdbID')
+        }
 
     def get_request_from_api(self, title: str):
         """Send a GET requests to API and returns response in json format"""

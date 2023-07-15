@@ -21,6 +21,14 @@ class JSONDataManager(DataManagerInterface):
         with open(self.filename, 'r') as file:
             return json.loads(file.read())
 
+    def is_user_id_exists(self, user_id):
+        """Checks if user_id exists in data file,
+        Returns boolean value accordingly"""
+        for user in self.get_all_users():
+            if user['id'] == user_id:
+                return True
+        return False
+
     def add_user(self, user_dict) -> None:
         """Adds a new user to data file"""
         users_list = self.get_all_users()
@@ -69,10 +77,20 @@ class JSONDataManager(DataManagerInterface):
         users_list = self.get_all_users()
         for user in users_list:
             if user['id'] == user_id:
-                movie_ids = (movie['id'] for movie in user['movies'])
-                if movie_dict['id'] not in movie_ids:
+                movie_names = (movie['name'] for movie in user['movies'])
+                if movie_dict['name'] not in movie_names:
                     user['movies'].append(movie_dict)
+                else:
+                    raise ValueError("Movie already exists, try again")
         self.save_to_file(users_list)
+
+    def is_movie_id_exists(self, user_id, movie_id) -> bool:
+        """Checks if movie_id exists in users movies list,
+        Returns boolean value accordingly"""
+        for movie in self.get_user_movies(user_id):
+            if movie['id'] == movie_id:
+                return True
+        return False
 
     def delete_user_movie(self, user_id, movie_id) -> None:
         """Deletes a movie from specific user in data file"""

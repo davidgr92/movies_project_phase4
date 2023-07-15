@@ -1,8 +1,39 @@
 {% include "head.html" %}
-	<div class="image_wrapper">
-  	  	<img src="{{ url_for('static', filename='images/cinema-compressed.jpg') }}" alt="" />
-		<div class="overlay-hero">
-			<h1>{{ title|default("Welcome", true) }} </h1>
-		</div>
+<nav id="movieapp-nav" class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#movieweb-app-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand">MovieWeb App</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="movieweb-app-navbar">
+      <ul class="nav navbar-nav">
+        <li><a href="{{ url_for('list_users') }}">Users List</a></li>
+        {% if user_id is defined %}
+          <li><a href="{{ url_for('get_user_movies', user_id=user_id) }}">User Movies</a></li>
+        {% elif user is defined %}
+          <li><a href="{{ url_for('add_new_user_movie', user_id=user.id) }}">Add Movie</a></li>
+        {% endif %}
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+
+<div class="image_wrapper">
+	<img id="hero-img" src="{{ url_for('static', filename='images/cinema-compressed.jpg') }}" alt="" />
+	<div class="overlay-hero">
+		<h1>MovieWeb App</h1>
+		<h2>{{ title|default("Welcome", true) }} </h2>
 	</div>
-	<div class="main-content">
+</div>
+<div class="main-content container-fluid">
+  {% include "alerts.html" %}
